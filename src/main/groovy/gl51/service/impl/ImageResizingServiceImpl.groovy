@@ -33,20 +33,20 @@ class ImageResizingServiceImpl implements ImageResizingService {
     Image getAndResizeImage() {
         //Récupération de l'image
         Image image_source=imageService.fetchImage()
-
+//salut bg
         //Redimensionnement de l'image au format 1024*1024
         Image new_image=resize(image_source,1024,1024)
 
         //Création du thumbail
         Image thumbnail=resize(image_source,50,50)
-
+// le hanout est méfer
         //Ajout du filigrane
         Image logo=imageFiligraneService.add_filigrane(thumbnail)
 
         //Stockage dans le cloud
         cloudUploadService.uploadToCloud(new_image)
         cloudUploadService.uploadToCloud(logo)
-
+//blablablabla
         //Mise à jour de la base de données
         updateDataBaseService.updateDatabase(new_image.getDimension_x(),new_image.getDimension_y(),new_image.getNom())
 
